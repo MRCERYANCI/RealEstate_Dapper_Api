@@ -1,0 +1,8 @@
+﻿@model List<ResultServiceDto>
+
+<ul class="w3l-right-book w3l-right-book-grid mt-md-5 mt-4">
+    @foreach(var item in Model)
+    {
+        <li><span class="fa fa-check" aria-hidden="true"></span>@item.ServiceName</li>
+    }
+</ul>

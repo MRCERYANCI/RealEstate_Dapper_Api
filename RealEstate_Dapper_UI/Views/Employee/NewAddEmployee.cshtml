@@ -1,0 +1,40 @@
+﻿@model CreateEmployeeDto
+@{
+    ViewData["Title"] = "NewAddEmployee";
+    Layout = "~/Views/Admin/Index.cshtml";
+}
+
+<div class="container-fluid pt-4 px-4">
+	<div class="row g-4">
+		<div class="col-sm-12 col-xl-12">
+			<div class="bg-light rounded h-100 p-4">
+				<h6 class="mb-4">Yeni Personel Ekleme Formu</h6>
+				<form method="post">
+					<div class="mb-3">
+						<label for="exampleInputEmail1" class="form-label">Personel Adı Soyadı</label>
+						<input type="text" class="form-control" asp-for="EmployeeName" id="exampleInputEmail1" aria-describedby="emailHelp">
+					</div>
+					<div class="mb-3">
+						<label for="exampleInputEmail1" class="form-label">Personel Unvanı</label>
+						<input type="text" class="form-control" asp-for="EmployeeTitle" id="exampleInputEmail1" aria-describedby="emailHelp">
+					</div>
+					<div class="mb-3">
+						<label for="exampleInputEmail1" class="form-label">Personel Mail Adresi</label>
+						<input type="email" class="form-control" asp-for="EmployeeMail" id="exampleInputEmail1" aria-describedby="emailHelp">
+					</div>
+					<div class="mb-3">
+						<label for="exampleInputEmail1" class="form-label">Personel Telefon Numarası</label>
+						<input type="text" class="form-control" asp-for="EmployeePhoneNumber" id="exampleInputEmail1" aria-describedby="emailHelp">
+					</div>
+					<div class="mb-3">
+						<label for="exampleInputEmail1" class="form-label">Personel Görsel</label>
+						<input type="text" class="form-control" asp-for="EmployeeImageUrl" id="exampleInputEmail1" aria-describedby="emailHelp">
+					</div>
+					<button type="submit" class="btn btn-primary">Kaydet</button>
+				</form>
+			</div>
+		</div>
+
+	</div>
+</div>
+
