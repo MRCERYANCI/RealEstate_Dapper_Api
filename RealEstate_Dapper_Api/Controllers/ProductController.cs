@@ -27,5 +27,13 @@ namespace RealEstate_Dapper_Api.Controllers
             var values = await _productRepository.GetAllProductWithCategoryAsync();
             return Ok(values);
         }
-    }
+
+        [HttpGet("ProductDealOfTheDayStatusChangeTo")]
+        public IActionResult ProductDealOfTheDayStatusChangeTo(int ProductId,bool ProductStatus)
+        {
+            _productRepository.ProductDealOfTheDayStatusChangeTo(ProductId, ProductStatus);
+            return Ok();
+        }
+
+	}
 }

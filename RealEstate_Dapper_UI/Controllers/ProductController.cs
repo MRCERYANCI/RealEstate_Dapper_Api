@@ -63,5 +63,16 @@ namespace RealEstate_Dapper_UI.Controllers
 			}
 			return View();
 		}
+
+		public async Task<IActionResult> ProductDealOfTheDayStatusChangeTo(int ProductId, bool ProductStatus)
+		{
+			var client = _httpClientFactory.CreateClient();//İstemciyi Oluştruduk					
+			var responseMessage = await client.GetAsync($"https://localhost:44350/api/Product/ProductDealOfTheDayStatusChangeTo?ProductId={ProductId}&ProductStatus={ProductStatus}");
+			if (responseMessage.IsSuccessStatusCode)//Eğer istek attığımız apiden(responsemessage) 200-299 arası durum kodu dönerse
+			{
+				return RedirectToAction("Index");
+			}
+			return View();
+		}
 	}
 }

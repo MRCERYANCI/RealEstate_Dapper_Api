@@ -9,6 +9,7 @@
         public string ProductDistrict { get; set; }
         public string ProductAdress { get; set; }
         public string ProductDescription { get; set; }
-        public short CategoryName { get; set; }
+        public string CategoryName { get; set; }
+        public bool DealOfTheDay { get; set; }
     }
 }

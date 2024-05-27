@@ -4,6 +4,9 @@
 	ViewData["Title"] = "Index";
 	Layout = "~/Views/Admin/Index.cshtml";
 	int Count = 0;
+	string ButonTitle = "";
+	string ButtonClass = "";
+	bool Status = true;
 }
 
 <div class="container-fluid pt-4 px-4">
@@ -25,11 +28,17 @@
 								<th scope="col">Sil</th>
 								<th scope="col">Güncelle</th>
 								<th scope="col">Sitede Gör</th>
+								<th scope="col">Günün Fırsatı</th>
 							</tr>
 						</thead>
 						<tbody>
 							@foreach (var x in Model)
 							{
+								if (x.DealOfTheDay == true) { ButonTitle = "Pasif Yap"; ButtonClass = "btn btn-outline-danger"; Status = false; }
+								else { ButonTitle = "Aktif Yap"; ButtonClass = "btn btn-outline-success"; Status = true; }
+
+
+
 								Count++;
 								<tr>
 									<td>@Count</td>
@@ -42,6 +51,7 @@
 									<td><a href="/Product/DeleteProduct?ProductId=@x.ProductID" class="btn btn-outline-danger">Sil</a></td>
 									<td><a href="/Product/GetProduct?ProductId=@x.ProductID" class="btn btn-outline-success">Güncelle</a></td>
 									<td><a href="#" class="btn btn-outline-primary">Sitede Gör</a></td>
+									<td><a href="/Product/ProductDealOfTheDayStatusChangeTo?ProductId=@x.ProductID&ProductStatus=@Status" class="@ButtonClass">@ButonTitle</a></td>
 								</tr>
 							}
 						</tbody>
