@@ -1,4 +1,4 @@
-﻿namespace RealEstate_Dapper_Api.Repositories.ProductRepository
+﻿namespace RealEstate_Dapper_Api.Dtos.ProductDtos
 {
     public class ResultProductWithCategoryDto
     {
@@ -12,6 +12,6 @@
         public string ProductCoverImage { get; set; }
         public string ProductType { get; set; }
         public string CategoryName { get; set; }
-		public bool DealOfTheDay { get; set; }
-	}
+        public bool DealOfTheDay { get; set; }
+    }
 }
