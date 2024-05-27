@@ -20,7 +20,7 @@ namespace RealEstate_Dapper_UI.ViewComponents.Dashboard
             if (responsemessage.IsSuccessStatusCode)//200 ile 299 arasında bir sayı dönerse true döneceğinden başarılı false dönerse başarısız
             {
                 var jsondata = await responsemessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultProductDto>>(jsondata); //Json Türünü Normale Çevirmek için DeserializeObject Kullanılır
+                var values = JsonConvert.DeserializeObject<List<ResultLast5ProductWithCategoryDto>>(jsondata); //Json Türünü Normale Çevirmek için DeserializeObject Kullanılır
                 return View(values);
             }
 
