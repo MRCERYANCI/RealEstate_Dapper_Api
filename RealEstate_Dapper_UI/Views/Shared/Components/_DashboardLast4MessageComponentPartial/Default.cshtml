@@ -8,12 +8,39 @@
         </div>
         @foreach(var item in Model)
         {
+            string gunsuresi;
+            TimeSpan gunfarkı;
+            gunfarkı = DateTime.Parse(DateTime.Now.ToString()) - DateTime.Parse(item.SendDate.ToString());
+            if (gunfarkı.Days < 30)
+            {
+                if (gunfarkı.Days < 1)
+                {
+                    if (gunfarkı.Hours < 1)
+                    {
+                        gunsuresi = gunfarkı.Minutes + " dakika önce";
+                    }
+                    else
+                    {
+                        gunsuresi = gunfarkı.Hours + " saat önce";
+                    }
+                }
+                else
+                {
+                    gunsuresi = gunfarkı.Days + " gün önce";
+                }
+            }
+            else
+            {
+                int fark = gunfarkı.Days / 30;
+                gunsuresi = fark.ToString() + " ay önce";
+            }
+
             <div class="d-flex align-items-center border-bottom py-3">
                 <img class="rounded-circle flex-shrink-0" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="" style="width: 40px; height: 40px;">
                 <div class="w-100 ms-3">
                     <div class="d-flex w-100 justify-content-between">
                         <h6 class="mb-0">@item.Name</h6>
-                        <small>15 minutes ago</small>
+                        <small>@gunsuresi</small>
                     </div>
                     <span>@(item.Message.Length > 23 ? item.Message.Substring(0, 23) + "..." : item.Message)</span>
                 </div>
