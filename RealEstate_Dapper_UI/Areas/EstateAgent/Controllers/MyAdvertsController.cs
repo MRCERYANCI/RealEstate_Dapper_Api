@@ -4,7 +4,7 @@ namespace RealEstate_Dapper_UI.Areas.EstateAgent.Controllers
 {
     [Area("EstateAgent")]
     [Route("[area]/[controller]/[action]/{id?}")]
-    public class LayoutEstateAgentController : Controller
+    public class MyAdvertsController : Controller
     {
         public IActionResult Index()
         {
