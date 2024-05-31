@@ -11,8 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\" />
-    <Folder Include="Areas\EstateAgent\Controllers\" />
     <Folder Include="Areas\EstateAgent\Data\" />
     <Folder Include="Areas\EstateAgent\Models\" />
     <Folder Include="Areas\EstateAgent\Views\" />
