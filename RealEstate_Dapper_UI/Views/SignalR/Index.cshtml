@@ -19,9 +19,17 @@
                                 connection.start().then(() => {
                                     $("#constatus").text(connection.state);
 
+                                    setInterval(() => {
+                                        connection.invoke("SendCategoryCount");
+                                    }, 1000);   
+
                                 }).catch((err) => {
                                     console.log(err);
-                                });                              
+                                });
+
+                                connection.on("ReceiverCategoryCount", (value) => {
+                                    $("#categoryCount").text(value);
+                                });
                             });
                         </script>
                     </div>
@@ -34,5 +42,11 @@
 <div class="row">
     <div class="col-md-8 offset-2">
         <div class="alert alert-info">Bağlantının Durumu: <strong id="constatus"></strong></div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8 offset-2">
+        <div class="alert alert-danger">Kategori Sayısı: <strong id="categoryCount"></strong></div>
     </div>
 </div>
