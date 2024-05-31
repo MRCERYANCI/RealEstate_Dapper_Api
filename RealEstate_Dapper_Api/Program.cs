@@ -61,6 +61,6 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
-app.MapHub<SignalRHub>("/signalrhub");  //https://localhost:7261/carhub
+app.MapHub<SignalRHub>("/signalrhub");  //https://localhost:44350/signalrhub
 
 app.Run();
