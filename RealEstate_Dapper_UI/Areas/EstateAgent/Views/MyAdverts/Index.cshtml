@@ -1,8 +1,47 @@
-﻿
+﻿@model List<ResultProductDto>
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/EstateAgent/Views/Shared/_EstateAgentLayout.cshtml";
+    int Count = 0;
 }
 
 
 
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">İlan Tablosu(@Model.Count())</h4>
+                <p class="card-subtitle mb-4">
+                    Use one of two modifier classes to make
+                    <code>&lt;thead&gt;</code>s appear light or dark gray.
+                </p>
+                <div class="table-responsive">
+                    <table class="table mb-0">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>#</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Username</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach(var item in Model)
+                            {
+                                Count++;
+
+                                <tr>
+                                    <th scope="row">@Count</th>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td>mdo</td>
+                                </tr>
+                            }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
