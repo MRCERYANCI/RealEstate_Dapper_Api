@@ -106,9 +106,9 @@
             <div class="dropdown d-inline-block ml-2">
                 <button type="button" class="btn header-item waves-effect waves-light" id="page-header-user-dropdown"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="rounded-circle header-profile-user" src="~/Admin/horizontal/assets/images/users/avatar-3.jpg"
+                    <img class="rounded-circle header-profile-user" src="@ViewBag.Image"
                          alt="Header Avatar">
-                    <span class="d-none d-sm-inline-block ml-1">Burak Çokkeçeci</span>
+                    <span class="d-none d-sm-inline-block ml-1">@ViewBag.Name</span>
                     <i class="mdi mdi-chevron-down d-none d-sm-inline-block"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
@@ -128,7 +128,7 @@
                         Ayarlar
                     </a>
                    
-                    <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
+                    <a class="dropdown-item d-flex align-items-center justify-content-between" href="/EstateAgent/Login/Logout">
                         <span>Çıkış Yap</span>
                     </a>
                 </div>

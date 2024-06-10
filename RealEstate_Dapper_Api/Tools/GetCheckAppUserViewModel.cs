@@ -10,6 +10,7 @@
         public string TC { get; set; }
         public string PhoneNumber { get; set; }
         public string Role { get; set; }
+        public string Image { get; set; }
         public bool IsExist { get; set; }
     }
 }

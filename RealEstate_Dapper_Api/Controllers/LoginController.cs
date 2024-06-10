@@ -41,7 +41,8 @@ namespace RealEstate_Dapper_Api.Controllers
                         Role = values.Role,
                         TC = values.TC,
                         Surname = values.Surname,
-                        Name=values.Name
+                        Name=values.Name,
+                        Image=values.Image
                     };
 
                     var token = JwtTokenGenerator.GenerateToken(getCheckAppUserViewModel);

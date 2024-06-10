@@ -69,5 +69,20 @@ namespace RealEstate_Dapper_UI.Areas.EstateAgent.Controllers
 
             return View();
         }
+
+        public async Task<IActionResult> Logout()
+        {
+            // Kullanıcı oturumunu sonlandır
+            await HttpContext.SignOutAsync();
+
+            // Cookie'yi sil
+            if (Request.Cookies["CokkececiEmlakJwt"] != null)
+            {
+                Response.Cookies.Delete("CokkececiEmlakJwt");
+            }
+
+            // giriş sayfasına yönlendir
+            return RedirectToAction("Index", "Login");
+        }
     }
 }
