@@ -1,0 +1,27 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+@await Component.InvokeAsync("_EstateAgentLayoutHeadComponentPartial")
+<body>
+    <div id="layout-wrapper">
+        <div class="main-content">
+            @await Component.InvokeAsync("_EstateAgentLayoutHeaderComponentPartial")
+
+            @await Component.InvokeAsync("_EstateAgentLayoutTopNavComponentPartial")
+
+            <div class="page-content">
+                <div class="container-fluid">
+                    @await Component.InvokeAsync("_EstateAgentLayoutPageComponentPartial")
+                    @RenderBody()
+                </div> 
+            </div>
+            @await Component.InvokeAsync("_EstateAgentLayoutFooterComponentPartial")
+        </div>
+    </div>
+    @await Component.InvokeAsync("_EstateAgentLayoutScriptComponentPartial")
+</body>
+</html>

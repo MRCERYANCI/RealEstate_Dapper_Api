@@ -1,25 +1,7 @@
 ﻿
 @{
-    Layout = null;
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/EstateAgent/Views/Shared/_EstateAgentLayout.cshtml";
 }
 
-<!DOCTYPE html>
-<html lang="en">
-@await Component.InvokeAsync("_AdminLayoutHeadComponentPartial")
-<body>
-    <div class="container-fluid position-relative bg-white d-flex p-0">
-        @await Component.InvokeAsync("_AdminLayoutSpinnerComponentPartial")
-        @await Component.InvokeAsync("_EstateAgentLayoutSidebarComponentPartial")
-        <div class="content">
-            @await Component.InvokeAsync("_AdminLayoutNavBarComponentPartial")
 
-            @RenderBody()
-
-            @await Component.InvokeAsync("_AdminLayoutFooterComponenetPartial")
-
-        </div>
-        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
-    </div>
-    @await Component.InvokeAsync("_AdminLayoutScriptComponentPartial")
-</body>
-</html>

@@ -8,6 +8,10 @@ namespace RealEstate_Dapper_UI.Areas.EstateAgent.Controllers
     {
         public IActionResult Index()
         {
+            TempData["Home"] = "Ana Sayfa";
+            TempData["Pages"] = "İlanlar";
+            TempData["Starter"] = "Tüm İlanlarım";
+
             return View();
         }
     }
