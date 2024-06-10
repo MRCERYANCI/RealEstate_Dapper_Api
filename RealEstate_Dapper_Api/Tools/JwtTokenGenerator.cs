@@ -38,6 +38,16 @@ namespace RealEstate_Dapper_Api.Tools
                 claims.Add(new Claim("TC", getCheckAppUserViewModel.TC));
             }
 
+            if (!string.IsNullOrWhiteSpace(getCheckAppUserViewModel.Name))
+            {
+                claims.Add(new Claim("Name", getCheckAppUserViewModel.Name));
+            }
+
+            if (!string.IsNullOrWhiteSpace(getCheckAppUserViewModel.Surname))
+            {
+                claims.Add(new Claim("SurName", getCheckAppUserViewModel.Surname));
+            }
+
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JwtTokenDefaults.Key));
             var signinCredentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
             var expiredate = DateTime.UtcNow.AddMinutes(JwtTokenDefaults.Expire);

@@ -6,13 +6,11 @@
     int Count = 0;
 }
 
-
-
 <div class="row">
     <div class="col-xl-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">İlan Tablosu(@Model.Count())</h4>
+                <h4 class="card-title">Yayınladığınız İlan Tablosu(@Model.Count())</h4>
                 <p class="card-subtitle mb-4">
                     Use one of two modifier classes to make
                     <code>&lt;thead&gt;</code>s appear light or dark gray.
@@ -22,21 +20,35 @@
                         <thead class="thead-light">
                             <tr>
                                 <th>#</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Username</th>
+                                <th>İlan Başlığı</th>
+                                <th>Şehir</th>
+                                <th>İlçe</th>
+                                <th>Kategori</th>
+                                <th>Fiyat</th>
+                                <th>Tür</th>
+                                <th>Sil</th>
+                                <th>Güncelle</th>
+                                <th>Sitede Gör</th>
+           
                             </tr>
                         </thead>
                         <tbody>
                             @foreach(var item in Model)
                             {
                                 Count++;
+                                decimal UrunFiyat = item.ProductPrice;
 
                                 <tr>
                                     <th scope="row">@Count</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>mdo</td>
+                                    <td>@item.ProductTitle</td>
+                                    <td>@item.ProductCity</td>
+                                    <td>@item.ProductDistrict</td>
+                                    <td>@item.CategoryName</td>
+                                    <td>@UrunFiyat.ToString("C")</td>
+                                    <td>@item.ProductType</td>
+                                    <td><a href="#" class="btn btn-outline-danger">Sil</a></td>
+                                    <td><a href="#" class="btn btn-outline-success">Güncelle</a></td>
+                                    <td><a href="#" class="btn btn-outline-primary">Sitede Gör</a></td>               
                                 </tr>
                             }
                     </table>
