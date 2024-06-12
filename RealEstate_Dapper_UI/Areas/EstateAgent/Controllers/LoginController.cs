@@ -62,7 +62,7 @@ namespace RealEstate_Dapper_UI.Areas.EstateAgent.Controllers
 
                         await HttpContext.SignInAsync(JwtBearerDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProps);
 
-                        return RedirectToAction("Index", "MyAdverts");
+                        return RedirectToAction("Index", "Dashboard");
                     }
                 }
             }

@@ -1,0 +1,90 @@
+﻿@model List<RealEstateAgentDashboardChartDto>
+
+<!DOCTYPE html>
+<html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<style>
+    .chart-container {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 20px;
+    }
+</style>
+<body>
+    <div class="row chart-container">
+        <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+        <canvas id="myChart1" style="width:100%;max-width:600px"></canvas>
+    </div>
+    @{
+        var xValues = new List<string>();
+        var yValues = new List<int>();
+
+        foreach (var item in Model)
+        {
+            xValues.Add(item.ProductCity);
+            yValues.Add(item.CityCount);
+        }
+
+        <script>
+            var xValues = @Html.Raw(Json.Serialize(xValues));
+            var yValues = @Html.Raw(Json.Serialize(yValues));
+            var barColors = ["rgb(106,212,221)", "rgb(127,199,217)", "rgb(54,84,134)", "rgb(134,182,246)", "rgb(0,141,218)"];
+
+            new Chart("myChart", {
+                type: "bar",
+                data: {
+                    labels: xValues,
+                    datasets: [{
+                        backgroundColor: barColors,
+                        data: yValues
+                    }]
+                },
+                options: {
+                    legend: { display: false },
+                    title: {
+                        display: true,
+                        text: "Şehir - İlan İstatistiği"
+                    }
+                }
+            });
+        </script>
+    }
+
+    @{
+        var xValues1 = new List<string>();
+        var yValues1 = new List<int>();
+
+        foreach (var item in Model)
+        {
+            xValues1.Add(item.ProductCity);
+            yValues1.Add(item.CityCount);
+        }
+
+        <script>
+            var xValues1 = @Html.Raw(Json.Serialize(xValues1));
+            var yValues1 = @Html.Raw(Json.Serialize(yValues1));
+            var barColors1 = ["rgb(106,212,221)", "rgb(127,199,217)", "rgb(54,84,134)", "rgb(134,182,246)", "rgb(0,141,218)"];
+
+            new Chart("myChart1", {
+                type: "bar",
+                data: {
+                    labels: xValues1,
+                    datasets: [{
+                        backgroundColor: barColors1,
+                        data: yValues1
+                    }]
+                },
+                options: {
+                    legend: { display: false },
+                    title: {
+                        display: true,
+                        text: "Şehir - İlan İstatistiği"
+                    }
+                }
+            });
+        </script>
+    }
+
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+﻿@model List<ResultLast5ProductWithCategoryDto>
+@{
+    int Count = 0;
+}
+
+
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Son 5 İlan Listesi</h4>
+              
+                <div class="table-responsive">
+                    <table class="table table-centered table-hover table-xl mb-0" id="recent-orders">
+                        <thead>
+                            <tr>
+                                <th class="border-top-0">#</th>
+                                <th class="border-top-0">Başlık</th>
+                                <th class="border-top-0">Şehir - İlçe</th>
+                                <th class="border-top-0">Kategori</th>
+                                <th class="border-top-0">Fiyat</th>
+                                <th class="border-top-0">İlanı Gör</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach(var item in Model)
+                            {
+                                Count++;
+                                decimal Fiyat = item.ProductPrice;
+                                <tr>
+                                    <td class="text-truncate">@Count</td>
+                                    <td class="text-truncate">@item.ProductTitle</td>
+                                    <td class="text-truncate">@item.ProductCity - @item.ProductDistrict</td>
+                                    <td>
+                                        <span class="badge badge-soft-secondary p-2">@item.CategoryName</span>
+                                    </td>
+                                    <td class="text-truncate">@Fiyat.ToString("C")</td>
+                                    <td class="text-truncate"><a href="#" class="btn btn-outline-primary">İlanı Gör</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+            </div> 
+        </div> 
+    </div> 
+</div>
