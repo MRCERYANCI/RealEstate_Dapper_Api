@@ -1,9 +1,10 @@
-﻿
+﻿@model List<ResultInBoxMessageDto>
+
 <div class="dropdown d-inline-block">
     <button type="button" class="btn header-item noti-icon waves-effect waves-light" id="page-header-notifications-dropdown"
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="mdi mdi-bell"></i>
-        <span class="badge badge-danger badge-pill">0</span>
+        <span class="badge badge-danger badge-pill">@Model.Count()</span>
     </button>
     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right p-0"
          aria-labelledby="page-header-notifications-dropdown">
@@ -18,17 +19,48 @@
             </div>
         </div>
         <div data-simplebar style="max-height: 230px;">
-            <a href="" class="text-reset notification-item">
-                <div class="media">
-                    <img src="~/Admin/horizontal/assets/images/users/avatar-2.jpg"
-                         class="mr-3 rounded-circle avatar-xs" alt="user-pic">
-                    <div class="media-body">
-                        <h6 class="mt-0 mb-1">Samuel Coverdale</h6>
-                        <p class="font-size-12 mb-1">You have new follower on Instagram</p>
-                        <p class="font-size-12 mb-0 text-muted"><i class="mdi mdi-clock-outline"></i> 2 min ago</p>
+            @foreach(var item in Model)
+            {
+
+                string gunsuresi;
+                TimeSpan gunfarkı;
+                gunfarkı = DateTime.Parse(DateTime.Now.ToString()) - DateTime.Parse(item.SendDate.ToString());
+                if (gunfarkı.Days < 30)
+                {
+                    if (gunfarkı.Days < 1)
+                    {
+                        if (gunfarkı.Hours < 1)
+                        {
+                            gunsuresi = gunfarkı.Minutes + " dakika önce";
+                        }
+                        else
+                        {
+                            gunsuresi = gunfarkı.Hours + " saat önce";
+                        }
+                    }
+                    else
+                    {
+                        gunsuresi = gunfarkı.Days + " gün önce";
+                    }
+                }
+                else
+                {
+                    int fark = gunfarkı.Days / 30;
+                    gunsuresi = fark.ToString() + " ay önce";
+                }
+
+                <a href="" class="text-reset notification-item">
+                    <div class="media">
+                        <img src="@item.Image"
+                             class="mr-3 rounded-circle avatar-xs" alt="user-pic">
+                        <div class="media-body">
+                            <h6 class="mt-0 mb-1">@item.Name @item.Surname</h6>
+                            <p class="font-size-12 mb-1">@item.Subject</p>
+                            <p class="font-size-12 mb-0 text-muted"><i class="mdi mdi-clock-outline"></i> @gunsuresi</p>
+                        </div>
                     </div>
-                </div>
-            </a>
+                </a>
+            }
         </div>
         <div class="p-2 border-top">
             <a class="btn btn-sm btn-light btn-block text-center" href="javascript:void(0)">
