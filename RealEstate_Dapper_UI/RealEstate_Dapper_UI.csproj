@@ -15,6 +15,7 @@
   <ItemGroup>
     <Folder Include="Areas\EstateAgent\Data\" />
     <Folder Include="Areas\EstateAgent\Models\" />
+    <Folder Include="wwwroot\Images\ProductImages\" />
   </ItemGroup>
 
 </Project>

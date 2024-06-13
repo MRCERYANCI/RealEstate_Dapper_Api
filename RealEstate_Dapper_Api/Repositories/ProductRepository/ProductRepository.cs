@@ -13,6 +13,28 @@ namespace RealEstate_Dapper_Api.Repositories.ProductRepository
             _context = context;
         }
 
+        public async Task CreateProductAsync(CreateProductDto createProductDto)
+        {
+            string query = "insert into Product(ProductTitle,ProductPrice,ProductCoverImage,ProductCity,ProductDistrict,ProductAdress,ProductType,ProductDescription,ProductCategory,EmployeeID,DealOfTheDay,Status) values(@productTitle,@productPrice,@productCoverImage,@productCity,@productDistrict,@productAdress,@productType,@productDescription,@productCategory,@employeeID,@dealOfTheDay,@status)";
+            var paremeters = new DynamicParameters();
+            paremeters.Add("@productTitle", createProductDto.ProductTitle);
+            paremeters.Add("@productPrice", createProductDto.ProductPrice);
+            paremeters.Add("@productCoverImage", createProductDto.ProductCoverImage);
+            paremeters.Add("@productCity", createProductDto.ProductCity);
+            paremeters.Add("@productDistrict", createProductDto.ProductDistrict);
+            paremeters.Add("@productAdress", createProductDto.ProductAdress);
+            paremeters.Add("@productType", createProductDto.ProductType);
+            paremeters.Add("@productDescription", createProductDto.ProductDescription);
+            paremeters.Add("@productCategory", createProductDto.ProductCategory);
+            paremeters.Add("@employeeID", createProductDto.EmployeeID);
+            paremeters.Add("@dealOfTheDay", createProductDto.DealOfTheDay);
+            paremeters.Add("@status", createProductDto.Status);
+            using (var connection = _context.CreateConnection())
+            {
+                await connection.ExecuteAsync(query, paremeters);
+            }
+        }
+
         public async Task<List<ResultProductDto>> GetAllProductAsync()
         {
             string query = "Select * From Product";

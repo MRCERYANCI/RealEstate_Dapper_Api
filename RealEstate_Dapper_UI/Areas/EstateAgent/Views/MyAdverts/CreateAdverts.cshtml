@@ -1,11 +1,13 @@
-﻿@{
+﻿@model CreateProductDto
+
+@{
     ViewData["Title"] = "CreateAdverts";
     Layout = "~/Areas/EstateAgent/Views/Shared/_EstateAgentLayout.cshtml";
 }
 
 <link href="~/Admin/plugins/dropify/dropify.min.css" rel="stylesheet" type="text/css" />
 
-<div class="page-content">
+@* <div class="page-content">
     <div class="container-fluid">
 
        
@@ -23,5 +25,64 @@
             </div> 
         </div>
     </div>
+</div> *@
+
+
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-body">
+                <form method="post" enctype="multipart/form-data">
+                    <h4 class="card-title">Bootstrap MaxLength</h4>
+                    <p class="card-subtitle mb-4">Uses the HTML5 attribute "maxlength" to work.</p>
+
+                    <div class="form-group">
+                        <label>İlan Başlığı</label>
+                        <input type="text" class="form-control" maxlength="100" asp-for="ProductTitle" id="defaultconfig" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>İlan Fiyatı</label>
+                        <input type="text" asp-for="ProductPrice" class="form-control" id="thresholdconfig" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>İlan Resmi</label>
+                        <input type="file" class="form-control" asp-for="CoverImage" id="placement" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>İlan İli</label>
+                        <input type="text" class="form-control" maxlength="100" asp-for="ProductCity" id="alloptions" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>İlan İlçesi</label>
+                        <input type="text" class="form-control" maxlength="100" asp-for="ProductDistrict" id="alloptions" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>İlan Açık Adresi</label>
+                        <textarea asp-for="ProductAdress" id="textarea" class="form-control" maxlength="500" rows="8" placeholder="This textarea has a limit of 500 chars."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>İlan Türü</label>
+                        <select class="form-control" asp-for="ProductType">
+                            <option value="Kiralık">Kiralık</option>
+                            <option value="Satılık">Satılık</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>İlan Kategori</label>
+                        @Html.DropDownListFor(x => x.ProductCategory, (List<SelectListItem>)ViewBag.CategoryList, new { @class = "form-control" })
+                    </div>
+
+                    <button class="btn btn-outline-primary">İlanı Ekle</button>
+                </form>
+            </div> 
+        </div>
+    </div> 
 </div>
 
