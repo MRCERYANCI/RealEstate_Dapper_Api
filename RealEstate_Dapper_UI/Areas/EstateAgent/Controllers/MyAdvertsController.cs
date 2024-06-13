@@ -21,7 +21,7 @@ namespace RealEstate_Dapper_UI.Areas.EstateAgent.Controllers
             _loginService = loginService;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> ActiveAdverts()
         {
             TempData["Home"] = "Ana Sayfa";
             TempData["Pages"] = "İlanlar";
@@ -31,7 +31,29 @@ namespace RealEstate_Dapper_UI.Areas.EstateAgent.Controllers
             if (token != null)
             {
                 var client = _httpClientFactory.CreateClient();
-                var responsemessage = await client.GetAsync($"https://localhost:44350/api/Product/ProductAdvertsListByEmployeId/{Convert.ToInt32(_loginService.GetUserId)}");
+                var responsemessage = await client.GetAsync($"https://localhost:44350/api/Product/ProductAdvertsListByTrueEmployeId/{Convert.ToInt32(_loginService.GetUserId)}");
+                if (responsemessage.IsSuccessStatusCode)//200 ile 299 arasında bir sayı dönerse true döneceğinden başarılı false dönerse başarısız
+                {
+                    var jsondata = await responsemessage.Content.ReadAsStringAsync();
+                    var values = JsonConvert.DeserializeObject<List<ResultProductDto>>(jsondata); //Json Türünü Normale Çevirmek için DeserializeObject Kullanılır
+                    return View(values);
+                }
+            }
+
+            return View();
+        }
+
+        public async Task<IActionResult> PasiveAdverts()
+        {
+            TempData["Home"] = "Ana Sayfa";
+            TempData["Pages"] = "İlanlar";
+            TempData["Starter"] = "Pasif İlanlarım";
+
+            var token = User.Claims.FirstOrDefault(x => x.Type == "realestatetoken")?.Value;
+            if (token != null)
+            {
+                var client = _httpClientFactory.CreateClient();
+                var responsemessage = await client.GetAsync($"https://localhost:44350/api/Product/ProductAdvertsListByFalseEmployeId/{Convert.ToInt32(_loginService.GetUserId)}");
                 if (responsemessage.IsSuccessStatusCode)//200 ile 299 arasında bir sayı dönerse true döneceğinden başarılı false dönerse başarısız
                 {
                     var jsondata = await responsemessage.Content.ReadAsStringAsync();

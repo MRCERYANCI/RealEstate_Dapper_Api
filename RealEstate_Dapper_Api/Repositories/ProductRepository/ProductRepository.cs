@@ -44,11 +44,25 @@ namespace RealEstate_Dapper_Api.Repositories.ProductRepository
             }
         }
 
-        public async Task<List<ResultProductWithCategoryDto>> ProductAdvertsListByEmployeId(int EmployeeId)
+        public async Task<List<ResultProductWithCategoryDto>> ProductAdvertsListByFalseEmployeId(int EmployeeId)
         {
-            string query = "Select product.ProductID,product.ProductTitle,product.ProductPrice,product.ProductCity,product.ProductDistrict,product.ProductAdress,product.ProductDescription,product.ProductCoverImage,product.ProductType,category.CategoryName,Product.DealOfTheDay \" +\r\n                \"From Product product inner join Category category on product.ProductCategory=category.CategoryId Where EmployeeID = @employeeID";
+            string query = "Select product.ProductID,product.ProductTitle,product.ProductPrice,product.ProductCity,product.ProductDistrict,product.ProductAdress,product.ProductDescription,product.ProductCoverImage,product.ProductType,category.CategoryName,Product.DealOfTheDay From Product product inner join Category category on product.ProductCategory=category.CategoryId Where EmployeeID = @employeeID AND Status = @status";
             var parameters = new DynamicParameters();
             parameters.Add("@employeeID", EmployeeId);
+            parameters.Add("@status", false);
+            using (var connection = _context.CreateConnection())
+            {
+                var values = await connection.QueryAsync<ResultProductWithCategoryDto>(query, parameters);
+                return values.ToList();
+            }
+        }
+
+        public async Task<List<ResultProductWithCategoryDto>> ProductAdvertsListByTrueEmployeId(int EmployeeId)
+        {
+            string query = "Select product.ProductID,product.ProductTitle,product.ProductPrice,product.ProductCity,product.ProductDistrict,product.ProductAdress,product.ProductDescription,product.ProductCoverImage,product.ProductType,category.CategoryName,Product.DealOfTheDay From Product product inner join Category category on product.ProductCategory=category.CategoryId Where EmployeeID = @employeeID AND Status = @status";
+            var parameters = new DynamicParameters();
+            parameters.Add("@employeeID", EmployeeId);
+            parameters.Add("@status", true);
             using (var connection = _context.CreateConnection())
             {
                 var values = await connection.QueryAsync<ResultProductWithCategoryDto>(query, parameters);
