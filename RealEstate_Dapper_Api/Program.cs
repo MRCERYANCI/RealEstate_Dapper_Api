@@ -9,6 +9,7 @@ using RealEstate_Dapper_Api.Repositories.EstateAgentRepositories.DashboardReposi
 using RealEstate_Dapper_Api.Repositories.EstateAgentRepositories.DashboardRepositories.StatisticsRepositories;
 using RealEstate_Dapper_Api.Repositories.MessageRepositories;
 using RealEstate_Dapper_Api.Repositories.PopularLocationRepositories;
+using RealEstate_Dapper_Api.Repositories.ProductImagesRepositories;
 using RealEstate_Dapper_Api.Repositories.ProductRepository;
 using RealEstate_Dapper_Api.Repositories.ServiceRepository;
 using RealEstate_Dapper_Api.Repositories.StatisticsRepositories;
@@ -46,6 +47,7 @@ builder.Services.AddTransient<IDashboardStatisticsRepository, DashboardStatistic
 builder.Services.AddTransient<IChartRepository, ChartRepository>();
 builder.Services.AddTransient<ILast5ProductRepository, Last5ProductRepository>();
 builder.Services.AddTransient<IMessageRepository, MessageRepository>();
+builder.Services.AddTransient<IProductImageRepository, ProductImageRepository>();
 
 
 

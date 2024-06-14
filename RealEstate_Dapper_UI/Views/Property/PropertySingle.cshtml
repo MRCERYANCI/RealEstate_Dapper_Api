@@ -1,8 +1,39 @@
-﻿
+﻿@model GetProductByProductIdDto
+
 @{
     ViewData["Title"] = "ProperySingle";
     Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+
+    string gunsuresi;
+    TimeSpan gunfarkı;
+    gunfarkı = DateTime.Parse(DateTime.Now.ToString()) - DateTime.Parse(Model.CreateDate.ToString());
+    if (gunfarkı.Days < 30)
+    {
+        if (gunfarkı.Days < 1)
+        {
+            if (gunfarkı.Hours < 1)
+            {
+                gunsuresi = gunfarkı.Minutes + " dakika önce";
+            }
+            else
+            {
+                gunsuresi = gunfarkı.Hours + " saat önce";
+            }
+        }
+        else
+        {
+            gunsuresi = gunfarkı.Days + " gün önce";
+        }
+    }
+    else
+    {
+        int fark = gunfarkı.Days / 30;
+        gunsuresi = fark.ToString() + " ay önce";
+    }
+
 }
+
+
 
 <section class="w3l-about-breadcrumb">
     <div class="breadcrumb-bg breadcrumb-bg-about pt-5">
@@ -25,66 +56,39 @@
         <div class="inner mb-4">
             <ul class="blog-single-author-date align-items-center">
                 <li>
-                    <div class="listing-category"><span>Buy</span><span>Rent</span></div>
+                    <div class="listing-category"><span>@Html.DisplayFor(x => x.ProductType)</span><span>@Html.DisplayFor(x => x.CategoryName)</span></div>
                 </li>
-                <li><span class="fa fa-clock-o"></span> 5 months ago</li>
+                <li><span class="fa fa-clock-o"></span> @gunsuresi</li>
                 <li><span class="fa fa-eye"></span> 250 views</li>
             </ul>
         </div>
         <div class="post-content">
-            <h2 class="title-single"> A digital prescription for the pharma industry</h2>
+            <h2 class="title-single"> @Html.DisplayFor(x => x.ProductTitle)</h2>
         </div>
         <div class="blo-singl mb-4">
             <ul class="blog-single-author-date align-items-center">
                 <li>
-                    <p>Unnamed road, San Francisco, CA 94102</p>
+                    <p>@Html.DisplayFor(x => x.ProductAdress)</p>
                 </li>
-                <li><span class="fa fa-bed"></span> 3 Beds</li>
-                <li><span class="fa fa-bath"></span> 4 Baths</li>
-                <li><span class="fa fa-share-square-o"></span> 1258 sqrft</li>
+                <li><span class="fa fa-bed"></span> @Html.DisplayFor(x => x.BedRoomCount) Yatak Odası</li>
+                <li><span class="fa fa-bath"></span> @Html.DisplayFor(x => x.BathCount) Banyo</li>
+                <li><span class="fa fa-share-square-o"></span> @Html.DisplayFor(x => x.ProductSize) m<sup>2</sup></li>
             </ul>
             <ul class="share-post">
-                <a href="#url" class="cost-estate m-o">$25,0045</a>
+                <a href="#url" class="cost-estate m-o">@Model.ProductPrice.ToString("C")</a>
             </ul>
         </div>
         <div class="row">
             <div class="col-lg-8 w3l-news">
                 <div class="blog-single-post">
-                    <div class="single-post-image mb-5">
-                        <div class="owl-blog owl-carousel owl-theme">
-                            <div class="item">
-                                <div class="card">
-                                    <img src="~/starter/assets/images/p1.jpg" class="img-fluid radius-image" alt="image">
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="card">
-                                    <img src="~/starter/assets/images/p2.jpg" class="img-fluid radius-image" alt="image">
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="card">
-                                    <img src="~/starter/assets/images/p3.jpg" class="img-fluid radius-image" alt="image">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @await Component.InvokeAsync("_PropertySliderComponentPartial", new { id = ViewBag.Id })
 
                     <div class="single-post-content">
-                        <h3 class="post-content-title mb-3">Description</h3>
+                        <h3 class="post-content-title mb-3">Açıklama</h3>
                         <p class="mb-4">
-                            Lorem model text, and a search for 'lorem ipsum' will uncover many web sites still in their
-                            infancy. Various
-                            versions have evolved over the years, sometimes by accident, sometimes on purpose
-                            injected humour and the like.
+                           @Html.DisplayFor(x=>x.ProductDescription)
                         </p>
-                        <p class="mb-4">
-                            When you decide to put your business online it is a little bet tricky step
-                            for novice
-                            computer users because they want to keep data safe & secure.
-                            This problem developed from companies which did not take security seriously. Lorem ipsum
-                            dolor sit amet elit.
-                        </p>
+                       
                         <div class="single-bg-white">
                             <h3 class="post-content-title mb-4">Property detail</h3>
                             <ul class="details-list">

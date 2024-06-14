@@ -37,7 +37,7 @@ namespace RealEstate_Dapper_Api.Repositories.ProductRepository
 
         public async Task<List<ResultProductAndProductDetailDto>> GetAllProductAndProductDetailsAsync()
         {
-            string query = "Select Product.ProductID,Product.ProductPrice,Product.ProductTitle,Product.ProductCoverImage,Product.ProductType,Category.CategoryName,ProductDetails.ProductSize,ProductDetails.BathCount,ProductDetails.BedRoomCount,ProductDetails.RoomCount From Product inner join ProductDetails On Product.ProductID = ProductDetails.ProductID inner join Category On Product.ProductCategory = Category.CategoryId Order By Product.ProductID desc";
+            string query = "Select Users.Name,Users.Surname,Users.Image,Product.ProductID,Product.ProductAdress,Product.ProductPrice,Product.ProductTitle,Product.ProductCoverImage,Product.ProductType,Category.CategoryName,ProductDetails.ProductSize,ProductDetails.BathCount,ProductDetails.BedRoomCount,ProductDetails.RoomCount From Product inner join ProductDetails On Product.ProductID = ProductDetails.ProductID inner join Category On Product.ProductCategory = Category.CategoryId inner join Users On Product.UserId = Users.Id Order By Product.ProductID desc";
             using (var connection = _context.CreateConnection())
             {
                 var values = await connection.QueryAsync<ResultProductAndProductDetailDto>(query);
@@ -78,7 +78,7 @@ namespace RealEstate_Dapper_Api.Repositories.ProductRepository
 
         public async Task<GetProductByProductIdDto> GetProductByProductIdAsync(int id)
         {
-            string query = "Select Product.ProductID,Product.ProductPrice,Product.ProductTitle,Product.ProductCoverImage,Product.ProductType,Category.CategoryName,ProductDetails.ProductSize,ProductDetails.BathCount,ProductDetails.BedRoomCount,ProductDetails.RoomCount From Product inner join ProductDetails On Product.ProductID = ProductDetails.ProductID inner join Category On Product.ProductCategory = Category.CategoryId Where Product.ProductId = @productId Order By Product.ProductID desc";
+            string query = "Select Product.ProductID,Product.ProductDescription,Product.CreateDate,Product.ProductAdress,Convert(varchar(15),Cast(Product.ProductPrice as money),1) as 'ProductPrice',Product.ProductTitle,Product.ProductCoverImage,Product.ProductType,Category.CategoryName,ProductDetails.ProductSize,ProductDetails.BathCount,ProductDetails.BedRoomCount,ProductDetails.RoomCount From Product inner join ProductDetails On Product.ProductID = ProductDetails.ProductID inner join Category On Product.ProductCategory = Category.CategoryId Where Product.ProductId = @productId Order By Product.ProductID desc";
             var paremeters = new DynamicParameters();
             paremeters.Add("@productId", id);
             using (var connection = _context.CreateConnection())
