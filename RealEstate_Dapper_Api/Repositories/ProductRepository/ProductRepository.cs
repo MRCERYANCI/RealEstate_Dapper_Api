@@ -35,6 +35,16 @@ namespace RealEstate_Dapper_Api.Repositories.ProductRepository
             }
         }
 
+        public async Task<List<ResultProductAndProductDetailDto>> GetAllProductAndProductDetailsAsync()
+        {
+            string query = "Select Product.ProductID,Product.ProductPrice,Product.ProductTitle,Product.ProductCoverImage,Product.ProductType,Category.CategoryName,ProductDetails.ProductSize,ProductDetails.BathCount,ProductDetails.BedRoomCount,ProductDetails.RoomCount From Product inner join ProductDetails On Product.ProductID = ProductDetails.ProductID inner join Category On Product.ProductCategory = Category.CategoryId Order By Product.ProductID desc";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = await connection.QueryAsync<ResultProductAndProductDetailDto>(query);
+                return values.ToList();
+            }
+        }
+
         public async Task<List<ResultProductDto>> GetAllProductAsync()
         {
             string query = "Select * From Product";
@@ -63,6 +73,18 @@ namespace RealEstate_Dapper_Api.Repositories.ProductRepository
             {
                 var values = await connection.QueryAsync<ResultLast5ProductWithCategoryDto>(query);
                 return values.ToList();
+            }
+        }
+
+        public async Task<GetProductByProductIdDto> GetProductByProductIdAsync(int id)
+        {
+            string query = "Select Product.ProductID,Product.ProductPrice,Product.ProductTitle,Product.ProductCoverImage,Product.ProductType,Category.CategoryName,ProductDetails.ProductSize,ProductDetails.BathCount,ProductDetails.BedRoomCount,ProductDetails.RoomCount From Product inner join ProductDetails On Product.ProductID = ProductDetails.ProductID inner join Category On Product.ProductCategory = Category.CategoryId Where Product.ProductId = @productId Order By Product.ProductID desc";
+            var paremeters = new DynamicParameters();
+            paremeters.Add("@productId", id);
+            using (var connection = _context.CreateConnection())
+            {
+                var values = await connection.QueryFirstOrDefaultAsync<GetProductByProductIdDto>(query,paremeters);
+                return values;
             }
         }
 
