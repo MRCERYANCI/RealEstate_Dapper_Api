@@ -90,20 +90,20 @@
                         </p>
                        
                         <div class="single-bg-white">
-                            <h3 class="post-content-title mb-4">Property detail</h3>
+                            <h3 class="post-content-title mb-4">İlan Detayları</h3>
                             <ul class="details-list">
-                                <li><strong>Property id :</strong> PRPT12345 </li>
-                                <li><strong>Property size :</strong> 1200sqft </li>
-                                <li><strong>Rooms :</strong> 2 </li>
-                                <li><strong>Bedrooms :</strong> 5 </li>
-                                <li><strong>Bathrooms :</strong> 2 </li>
+                                <li><strong>İlan id :</strong> @Html.DisplayFor(x=>x.ProductId) </li>
+                                <li><strong>İlan m<sup>2</sup>'si :</strong> @Html.DisplayFor(x=>x.ProductSize) m<sup>2</sup> </li>
+                                <li><strong>Oda Sayısı :</strong> @Html.DisplayFor(x => x.RoomCount) </li>
+                                <li><strong>Yatak Odası :</strong> @Html.DisplayFor(x=>x.BedRoomCount) </li>
+                                <li><strong>Banyo Sayısı :</strong> @Html.DisplayFor(x=>x.BathCount) </li>
                                 <li><strong>Exterior material :</strong> Brick </li>
-                                <li><strong>Structure type :</strong> Wood </li>
-                                <li><strong>Garage size :</strong> 15 cars </li>
-                                <li><strong>Garages :</strong> 15 </li>
-                                <li><strong>Property Price :</strong> $ 750 </li>
-                                <li><strong>Built Year :</strong> 2018 </li>
-                                <li><strong>Avaiable from :</strong> Aug 2019 </li>
+                                <li><strong>Yapı Türü :</strong> Beton </li>
+                                <li><strong>Garaj Büyüklüğü :</strong> @Html.DisplayFor(x => x.GarageSize) m<sup>2</sup></li>
+                                <li><strong>Garaj Sayısı :</strong> 15 </li>
+                                <li><strong>İlan Fiyatı :</strong> @Model.ProductPrice.ToString("C") </li>
+                                <li><strong>Yapım Yılı :</strong> @Html.DisplayFor(x => x.BuildYear) </li>
+                                <li><strong>İlan Tarihi :</strong> @(((DateTime)Model.CreateDate).ToString("dd MMMM yyyy")) </li>
                             </ul>
                         </div>
                         <div class="single-bg-white">
@@ -143,19 +143,19 @@
                     <!-- Popular Post Widget-->
                     <div class="sidebar-widget popular-posts">
                         <div class="sidebar-title">
-                            <h4>Contact an Agent</h4>
+                            <h4>Emlakçını İletişim Bilgisi</h4>
                         </div>
 
                         <article class="post">
                             <figure class="post-thumb">
-                                <img src="~/starter/assets/images/l5.jpg" class="radius-image" alt="">
+                                <img src="@Html.DisplayFor(x=>x.Image)" class="radius-image" alt="">
                             </figure>
                             <div class="text mb-0">
                                 <a href="#blog-single">
-                                    Company realty
+                                    @Html.DisplayFor(x => x.Name) @Html.DisplayFor(x => x.Surname)
                                 </a>
-                                <div class="post-info">+(12) 324 567 89</div>
-                                <div class="post-info">companyrealty@mail.com</div>
+                                <div class="post-info">+(90) @Html.DisplayFor(x => x.PhoneNumber)</div>
+                                <div class="post-info">@Html.DisplayFor(x => x.Email)</div>
                             </div>
                         </article>
                         <button type="submit" class="btn btn-primary btn-style w-100">Request details</button>
@@ -165,7 +165,7 @@
                     <!-- Popular Post Widget-->
                     <div class="sidebar-widget popular-posts">
                         <div class="sidebar-title">
-                            <h4>Popular Post</h4>
+                            <h4>Emlakçının Son İlanları</h4>
                         </div>
 
                         <article class="post">
