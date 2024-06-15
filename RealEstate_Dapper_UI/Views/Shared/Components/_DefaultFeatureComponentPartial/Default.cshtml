@@ -13,30 +13,25 @@
 							<li><a href="#link">Yazlık - Bağ Evleri</a></li>
 						</ul>
 					</div>
-					<form action="#" class="w3l-cover-3-gd" method="GET">
-						<input type="search" name="text" placeholder="Anahtar Kelimeyi Girin" required>
+					<form asp-action="PropertyListWithSearch" asp-controller="Property" class="w3l-cover-3-gd" method="post">
+						<input type="search" name="searchKeyValue" placeholder="Anahtar Kelimeyi Girin" required>
 						<span class="input-group-btn">
-							<select class="btn btn-default" name="ext" required>
+							<select class="btn btn-default" name="propertyCategoryId" required>
 								<option selected="">Gayrimenkül Türü</option>
-								<option>Villa</option>
-								<option>Daire</option>
-								<option>Yazlık - Bağ Evleri</option>
-								<option>Building</option>
-								<option>Shop</option>
-								<option>Social housing</option>
-								<option>Town house</option>
+								<option value="1">Villa</option>
+								<option value="2">Bahçe</option>
+								<option value="3">Daire</option>
+								<option value="4">Tarla</option>
+								<option value="5">Yazlık</option>
 							</select>
 						</span>
 						<span class="input-group-btn">
-							<select class="btn btn-default" name="ext" required>
+							<select class="btn btn-default" name="city" required>
 								<option selected="">Ülke Seçiniz</option>
-								<option>Australia</option>
-								<option>London</option>
-								<option>India</option>
-								<option>Bangladesh</option>
-								<option>Saudi Arabia</option>
-								<option>America</option>
-								<option>Srilanka</option>
+								<option value="Kayseri">Kayseri</option>
+								<option value="İstanbul">İstanbul</option>
+								<option value="Ankara">Ankara</option>
+								<option value="Antalya">Antalya</option>
 							</select>
 						</span>
 						<button type="submit" class="btn-primary">Ara</button>
