@@ -8,6 +8,7 @@
         public string ProductAdress { get; set; }
         public int GarageSize { get; set; }
         public string BuildYear { get; set; }
+        public string SlugUrl { get; set; }
         public string VideoUrl { get; set; }
         public string Location { get; set; }
         public string Name { get; set; }
