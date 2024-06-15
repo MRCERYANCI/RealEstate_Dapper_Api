@@ -27,6 +27,10 @@ namespace RealEstate_Dapper_UI.Controllers
             return View();
         }
 
+        public async Task<IActionResult> PropertyListWithSearch()
+        {
+
+        }
         public async Task<IActionResult> PropertySingle(int id)
         {
             ViewBag.Id = id;
