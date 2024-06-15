@@ -41,7 +41,8 @@ namespace RealEstate_Dapper_UI.Controllers
             return View();
         }
 
-        public async Task<IActionResult> PropertySingle(int id)
+        [HttpGet("property/{slug}/{id}")]
+        public async Task<IActionResult> PropertySingle(string slug,int id)
         {
             ViewBag.Id = id;
 
@@ -51,6 +52,9 @@ namespace RealEstate_Dapper_UI.Controllers
             {
                 var jsondata = await responsemessage.Content.ReadAsStringAsync();
                 var values = JsonConvert.DeserializeObject<GetProductByProductIdDto>(jsondata);
+
+                string slugFromTitle = CreateSlug(values.ProductTitle);
+                ViewBag.Slug = slugFromTitle;
 
                 return View(values);
             }
