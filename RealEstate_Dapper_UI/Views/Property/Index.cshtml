@@ -14,7 +14,7 @@
                     decimal fiyat = item.ProductPrice;
 
                     <div class="col-lg-4 col-md-6 listing-img mt-5 pt-md-2">
-                        <a href="@Url.Action("PropertySingle","Property",new{slug=ViewBag.Slug,id=item.ProductId})">
+                        <a href="@Url.Action("PropertySingle","Property",new{slug=item.SlugUrl,id=item.ProductId})">
                             <div class="box16">
                                 <div class="rentext-listing-category"><span>@item.ProductType</span><span>@item.CategoryName</span></div>
                                 <img class="img-fluid" src="@item.ProductCoverImage" alt="@item.ProductTitle" style="width:555px;height:250px;">

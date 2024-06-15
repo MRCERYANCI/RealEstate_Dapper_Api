@@ -8,6 +8,7 @@
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Image { get; set; }
+        public string SlugUrl { get; set; }
         public string ProductAdress { get; set; }
         public string ProductCoverImage { get; set; }
         public string ProductType { get; set; }
