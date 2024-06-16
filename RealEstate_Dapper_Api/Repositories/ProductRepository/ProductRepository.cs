@@ -76,6 +76,17 @@ namespace RealEstate_Dapper_Api.Repositories.ProductRepository
             }
         }
 
+        public async Task<List<ResultProductWithCategoryDto>> GetProductByDealOfTheDayTrueWithCategoryAsync()
+        {
+            string query = "Select product.ProductID,product.ProductTitle,product.ProductPrice,product.ProductCity,product.ProductDistrict,product.ProductAdress,product.ProductDescription,product.ProductCoverImage,product.ProductType,category.CategoryName,Product.DealOfTheDay " +
+                "From Product product inner join Category category on product.ProductCategory=category.CategoryId Where product.DealOfTheDay = 1";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = await connection.QueryAsync<ResultProductWithCategoryDto>(query);
+                return values.ToList();
+            }
+        }
+
         public async Task<GetProductByProductIdDto> GetProductByProductIdAsync(int id)
         {
             string query = "Select Product.SlugUrl,ProductDetails.VideoUrl,ProductDetails.Location,ProductDetails.GarageSize,ProductDetails.BuildYear,Users.Id As 'UserId',Users.Name,Users.Surname,Users.Image,Users.PhoneNumber,Users.Email,Product.ProductID,Product.ProductDescription,Product.CreateDate,Product.ProductAdress,Convert(varchar(15),Cast(Product.ProductPrice as money),1) as 'ProductPrice',Product.ProductTitle,Product.ProductCoverImage,Product.ProductType,Category.CategoryName,ProductDetails.ProductSize,ProductDetails.BathCount,ProductDetails.BedRoomCount,ProductDetails.RoomCount From Product inner join ProductDetails On Product.ProductID = ProductDetails.ProductID inner join Category On Product.ProductCategory = Category.CategoryId inner join Users On Product.UserId = Users.Id Where Product.ProductId = @productId Order By Product.ProductID desc";
