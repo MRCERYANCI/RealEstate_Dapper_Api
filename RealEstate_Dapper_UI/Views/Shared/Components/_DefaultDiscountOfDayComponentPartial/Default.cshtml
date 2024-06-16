@@ -20,7 +20,7 @@
                                 <img src="@item.ProductCoverImage" alt="@item.ProductTitle" class="img-fluid news-image" />
                             </a>
                             <div class="blog-info">
-                                <a href="#category" class="category">Uncategorized</a>
+                                <a href="#category" class="category">@item.CategoryName</a>
                                 <h4><a href="#blog-single">@item.ProductTitle</a></h4>
                                 <p>@(item.ProductDescription.Length > 66 ? item.ProductDescription.Substring(0, 66) + "..." : item.ProductDescription)</p>
                             </div>
