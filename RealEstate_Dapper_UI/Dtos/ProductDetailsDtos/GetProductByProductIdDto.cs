@@ -3,6 +3,7 @@
     public class GetProductByProductIdDto
     {
         public int ProductId { get; set; }
+        public int UserId { get; set; }
         public decimal ProductPrice { get; set; }
         public string ProductAdress { get; set; }
         public DateTime CreateDate { get; set; }

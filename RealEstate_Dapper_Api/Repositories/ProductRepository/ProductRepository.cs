@@ -78,7 +78,7 @@ namespace RealEstate_Dapper_Api.Repositories.ProductRepository
 
         public async Task<GetProductByProductIdDto> GetProductByProductIdAsync(int id)
         {
-            string query = "Select Product.SlugUrl,ProductDetails.VideoUrl,ProductDetails.Location,ProductDetails.GarageSize,ProductDetails.BuildYear,Users.Name,Users.Surname,Users.Image,Users.PhoneNumber,Users.Email,Product.ProductID,Product.ProductDescription,Product.CreateDate,Product.ProductAdress,Convert(varchar(15),Cast(Product.ProductPrice as money),1) as 'ProductPrice',Product.ProductTitle,Product.ProductCoverImage,Product.ProductType,Category.CategoryName,ProductDetails.ProductSize,ProductDetails.BathCount,ProductDetails.BedRoomCount,ProductDetails.RoomCount From Product inner join ProductDetails On Product.ProductID = ProductDetails.ProductID inner join Category On Product.ProductCategory = Category.CategoryId inner join Users On Product.UserId = Users.Id Where Product.ProductId = @productId Order By Product.ProductID desc";
+            string query = "Select Product.SlugUrl,ProductDetails.VideoUrl,ProductDetails.Location,ProductDetails.GarageSize,ProductDetails.BuildYear,Users.Id As 'UserId',Users.Name,Users.Surname,Users.Image,Users.PhoneNumber,Users.Email,Product.ProductID,Product.ProductDescription,Product.CreateDate,Product.ProductAdress,Convert(varchar(15),Cast(Product.ProductPrice as money),1) as 'ProductPrice',Product.ProductTitle,Product.ProductCoverImage,Product.ProductType,Category.CategoryName,ProductDetails.ProductSize,ProductDetails.BathCount,ProductDetails.BedRoomCount,ProductDetails.RoomCount From Product inner join ProductDetails On Product.ProductID = ProductDetails.ProductID inner join Category On Product.ProductCategory = Category.CategoryId inner join Users On Product.UserId = Users.Id Where Product.ProductId = @productId Order By Product.ProductID desc";
             var paremeters = new DynamicParameters();
             paremeters.Add("@productId", id);
             using (var connection = _context.CreateConnection())
@@ -125,6 +125,18 @@ namespace RealEstate_Dapper_Api.Repositories.ProductRepository
                 await connection.ExecuteAsync(Query, parameters);
             }
 		}
+
+        public async Task<List<ResultLast3ProductDto>> ResultLast3ProductAsync(int id)
+        {
+            string query = "Select top 3 SlugUrl,ProductId,ProductCoverImage,ProductTitle,CreateDate From Product Where UserId = @userId Order by CreateDate Desc";
+            var paremeters = new DynamicParameters();
+            paremeters.Add("@userId", id);
+            using(var connection = _context.CreateConnection())
+            {
+                var values = await connection.QueryAsync<ResultLast3ProductDto>(query, paremeters);
+                return values.ToList();
+            }
+        }
 
         public async Task<List<ResultProductWithSearchListDto>> ResultProductWithSearchListAsync(string searchKeyValue, int propertyCategoryId, string city)
         {

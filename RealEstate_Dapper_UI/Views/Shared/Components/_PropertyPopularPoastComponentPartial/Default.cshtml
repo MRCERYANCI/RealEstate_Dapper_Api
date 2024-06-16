@@ -1,0 +1,22 @@
+﻿@model List<ResultLast3ProductDto>
+
+<div class="sidebar-widget popular-posts">
+    <div class="sidebar-title">
+        <h4>Emlakçının Son İlanları</h4>
+    </div>
+
+    @foreach(var item in Model)
+    {
+        <article class="post">
+            <figure class="post-thumb">
+                <img src="@item.ProductCoverImage" class="radius-image" alt="">
+            </figure>
+            <div class="text">
+                <a href="@Url.Action("PropertySingle","Property",new{slug=item.SlugUrl,id=item.ProductId})">
+                    @item.ProductTitle
+                </a>
+                <div class="post-info">@(((DateTime)item.CreateDate).ToString("dd MMMM yyyy")) - 2 comments</div>
+            </div>
+        </article>
+    }
+</div>
