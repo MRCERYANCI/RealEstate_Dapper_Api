@@ -30,3 +30,4 @@ Bu eğitimde, gerçek dünya senaryolarına uygun bir gayrimenkul yazılımı ge
 ![Ekran görüntüsü 2024-06-16 133126](https://github.com/MRCERYANCI/RealEstate_Dapper_Api/assets/98846167/b8dab570-e873-44ed-972d-60f261c1fffd)
 ![Ekran görüntüsü 2024-06-16 133113](https://github.com/MRCERYANCI/RealEstate_Dapper_Api/assets/98846167/6741c6c4-bd87-4842-b718-07359d41df60)
 ![Ekran görüntüsü 2024-06-16 133026](https://github.com/MRCERYANCI/RealEstate_Dapper_Api/assets/98846167/cac4742a-74b3-4738-86c8-79c9673c133d)
+![Ekran görüntüsü 2024-06-17 120803](https://github.com/MRCERYANCI/RealEstate_Dapper_Api/assets/98846167/637069eb-aa04-4cb0-8856-e08b9996b9ed)
