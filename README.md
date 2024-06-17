@@ -3,7 +3,7 @@ Bu eğitimde, gerçek dünya senaryolarına uygun bir gayrimenkul yazılımı ge
 
 🔍 Öne Çıkan Başlıklar:
 
-📌 Asp.Net Core 7.0 ile API geliştirme teknikleri: Asp.Net Core 7.0 ile güçlü ve esnek API'ler oluşturmayı öğrendik. Bu sürümün sunduğu yeni özellikler ve geliştirmeler sayesinde daha hızlı ve verimli uygulamalar geliştirebilmek mümkün oldu.
+📌 Asp.Net Core 7.0 ile API geliştirme teknikleri: Asp.Net Core 7.0 ile güçlü ve esnek API'ler oluşturmayı öğrendik. Bu sürümün sunduğu yeni özellikler ve geliştirmeler sayesinde daha hızlı ve verimli uygulamalar geliştirebilmek mümkün oldu. 
 📌 RESTful servisler ve CRUD operasyonları: RESTful servisler ve CRUD (Create, Read, Update, Delete) operasyonları ile veri manipülasyonunu ve yönetimini nasıl daha etkin hale getirebileceğimizi öğrendik.
 📌 Dapper ile hızlı ve esnek veritabanı erişimi: Dapper kullanarak veritabanı erişiminde yüksek performans sağladık. Bu mikro ORM, hem hız hem de esneklik açısından büyük avantajlar sundu.
 📌 MSSQL veritabanı kullanımı: Projemizde MSSQL veritabanını kullanarak veri depolama ve yönetimi konularında derinlemesine bilgi sahibi olduk. MSSQL'in güçlü veri işleme kabiliyetleri projeyi daha güvenilir ve ölçeklenebilir hale getirdi.
