@@ -135,7 +135,7 @@ namespace RealEstate_Dapper_Api.Repositories.ProductRepository
             }
         }
 
-        public async void ProductDealOfTheDayStatusChangeTo(int ProductId, bool ProductStatus)
+        public async Task ProductDealOfTheDayStatusChangeTo(int ProductId, bool ProductStatus)
 		{
             string Query = "Update Product Set DealOfTheDay=@status Where ProductId=@productıd";
             var parameters = new DynamicParameters();

@@ -15,7 +15,7 @@ namespace RealEstate_Dapper_Api.Repositories.ServiceRepository
 			_context = context;
 		}
 
-		public async void CreateService(CreateServiceDto createServiceDto)
+		public async Task CreateService(CreateServiceDto createServiceDto)
 		{
 			string query = "insert into Service(ServiceName,ServiceStatus) values(@servicename,@servicestatus)";
 			var paremeters = new DynamicParameters();
@@ -27,7 +27,7 @@ namespace RealEstate_Dapper_Api.Repositories.ServiceRepository
 			}
 		}
 
-		public async void DeleteService(int ServiceId)
+		public async Task DeleteService(int ServiceId)
 		{
 			string query = "Delete From Service Where ServiceId=@serviceId";
 			var paremeters = new DynamicParameters();
@@ -60,7 +60,7 @@ namespace RealEstate_Dapper_Api.Repositories.ServiceRepository
 			}
 		}
 
-		public async void UpdateService(UpdateServiceDto updateServiceDto)
+		public async Task UpdateService(UpdateServiceDto updateServiceDto)
 		{
 			string query = "Update Service Set ServiceName=@servicename,ServiceStatus=@servicestatus Where ServiceId=@serviceId";
 			var paremeters = new DynamicParameters();
