@@ -4,6 +4,12 @@ Bu eğitimde, gerçek dünya senaryolarına uygun bir gayrimenkul yazılımı ge
 🔍 Öne Çıkan Başlıklar:
 
 📌 Asp.Net Core 7.0 ile API geliştirme teknikleri: Asp.Net Core 7.0 ile güçlü ve esnek API'ler oluşturmayı öğrendik. Bu sürümün sunduğu yeni özellikler ve geliştirmeler sayesinde daha hızlı ve verimli uygulamalar geliştirebilmek mümkün oldu.
+📌 RESTful servisler ve CRUD operasyonları: RESTful servisler ve CRUD (Create, Read, Update, Delete) operasyonları ile veri manipülasyonunu ve yönetimini nasıl daha etkin hale getirebileceğimizi öğrendik.
+📌 Dapper ile hızlı ve esnek veritabanı erişimi: Dapper kullanarak veritabanı erişiminde yüksek performans sağladık. Bu mikro ORM, hem hız hem de esneklik açısından büyük avantajlar sundu.
+📌 MSSQL veritabanı kullanımı: Projemizde MSSQL veritabanını kullanarak veri depolama ve yönetimi konularında derinlemesine bilgi sahibi olduk. MSSQL'in güçlü veri işleme kabiliyetleri projeyi daha güvenilir ve ölçeklenebilir hale getirdi.
+📌 JWT ile kimlik doğrulama ve yetkilendirme: JSON Web Token (JWT) kullanarak güvenli kimlik doğrulama ve yetkilendirme işlemlerini gerçekleştirdik. Bu yöntem, kullanıcı güvenliğini sağlarken aynı zamanda performanstan ödün vermememizi sağladı.
+📌 ViewComponentler ile modüler ve yeniden kullanılabilir bileşenler oluşturma: ViewComponentler ile uygulamamızın ön yüzünde modüler ve yeniden kullanılabilir bileşenler oluşturduk. Bu, hem geliştirme sürecini hızlandırdı hem de kod tekrarını azaltarak projeyi daha sürdürülebilir kıldı.
+📌 Swagger entegrasyonu ile API dokümantasyonu: Swagger ile API'lerimizi dokümante ettik. Swagger entegrasyonu, API'lerin kullanımını ve test edilmesini kolaylaştırdı, böylece diğer geliştiricilerin projeyi anlaması ve kullanması daha basit hale geldi.
 
 
 ![Ekran görüntüsü 2024-06-17 011136](https://github.com/MRCERYANCI/RealEstate_Dapper_Api/assets/98846167/cfa10927-7346-440a-b5b5-7e7b2022119a)
