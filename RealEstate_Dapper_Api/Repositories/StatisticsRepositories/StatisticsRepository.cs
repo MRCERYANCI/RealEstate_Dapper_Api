@@ -115,7 +115,7 @@ namespace RealEstate_Dapper_Api.Repositories.StatisticsRepositories
 
         public string EmployeeNameByMaxProductCount()
         {
-            string query = "Select TOP(1) emp.EmployeeName , Count(pr.ProductID) From Product pr inner join Employee emp on pr.EmployeeID=emp.EmployeeID group by emp.EmployeeName order by Count(pr.ProductID) desc";
+            string query = "Select TOP(1) emp.Name , Count(pr.ProductID) From Product pr inner join Users emp on pr.UserId=emp.Id group by emp.Name order by Count(pr.ProductID) desc";
             using (var connection = _context.CreateConnection())
             {
                 var values = connection.QueryFirstOrDefault<string>(query);

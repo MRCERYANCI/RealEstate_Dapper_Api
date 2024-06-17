@@ -15,7 +15,7 @@ namespace RealEstate_Dapper_Api.Repositories.EstateAgentRepositories.DashboardRe
 
         public async Task<List<ResultLast5ProductWithCategoryDto>> GetLast5ProductAsync(int id)
         {
-            string query = "SELECT TOP(5) product.ProductID,product.ProductTitle,product.ProductPrice,product.ProductCity,product.ProductDistrict,category.CategoryName FROM Product inner join Category ON Product.ProductCategory = Category.CategoryId WHERE EmployeeID = @employeeID ORDER BY ProductID DESC ";
+            string query = "SELECT TOP(5) product.ProductID,product.ProductTitle,product.ProductPrice,product.ProductCity,product.ProductDistrict,category.CategoryName FROM Product inner join Category ON Product.ProductCategory = Category.CategoryId WHERE UserId = @employeeID ORDER BY ProductID DESC ";
             var paremeters = new DynamicParameters();
             paremeters.Add("@employeeID", id);
             using (var connection = _context.CreateConnection())

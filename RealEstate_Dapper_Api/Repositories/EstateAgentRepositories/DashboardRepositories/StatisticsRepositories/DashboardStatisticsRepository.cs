@@ -24,7 +24,7 @@ namespace RealEstate_Dapper_Api.Repositories.EstateAgentRepositories.DashboardRe
 
         public int ProductCountByEmployeeId(int id)
         {
-            string query = "Select Count(*) From Product Where EmployeeID = @employeeID";
+            string query = "Select Count(*) From Product Where UserId = @employeeID";
             var paremeters = new DynamicParameters();
             paremeters.Add("@employeeID", id);
             using (var connection = _context.CreateConnection())
@@ -36,7 +36,7 @@ namespace RealEstate_Dapper_Api.Repositories.EstateAgentRepositories.DashboardRe
 
         public int ProductCountByStatusFalse(int id)
         {
-            string query = "Select Count(*) From Product Where EmployeeID = @employeeID AND Status = @status";
+            string query = "Select Count(*) From Product Where UserId = @employeeID AND Status = @status";
             var paremeters = new DynamicParameters();
             paremeters.Add("@employeeID", id);
             paremeters.Add("@status", false);
@@ -49,7 +49,7 @@ namespace RealEstate_Dapper_Api.Repositories.EstateAgentRepositories.DashboardRe
 
         public int ProductCountByStatusTrue(int id)
         {
-            string query = "Select Count(*) From Product Where EmployeeID = @employeeID AND Status = @status";
+            string query = "Select Count(*) From Product Where UserId = @employeeID AND Status = @status";
             var paremeters = new DynamicParameters();
             paremeters.Add("@employeeID", id);
             paremeters.Add("@status", true);

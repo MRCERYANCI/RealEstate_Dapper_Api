@@ -15,7 +15,7 @@ namespace RealEstate_Dapper_Api.Repositories.EstateAgentRepositories.DashboardRe
 
         public async Task<List<ResultChartDto>> Get5CityForChart(int id)
         {
-            string query = "Select Top(5) ProductCity,Count(*) As 'CityCount' From Product Where EmployeeID = @employeeID group by ProductCity Order By CityCount Desc";
+            string query = "Select Top(5) ProductCity,Count(*) As 'CityCount' From Product Where UserId = @employeeID group by ProductCity Order By CityCount Desc";
             var paremeters = new DynamicParameters();
             paremeters.Add("@employeeID", id);
             using (var connection = _context.CreateConnection())
